@@ -11,6 +11,7 @@ import org.springframework.core.io.ClassPathResource;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 @Slf4j
 public class BddUtils {
@@ -44,7 +45,7 @@ public class BddUtils {
     ClassPathResource fileResource = new ClassPathResource("__files/" + fileName);
     if (fileResource.exists()) {
       try (InputStream inStream = fileResource.getInputStream()) {
-        return IOUtils.toString(inStream, "UTF-8");
+        return IOUtils.toString(inStream, StandardCharsets.UTF_8);
       } catch (IOException e) {
         log.error("Unable to Read From File : " + fileName);
       }
