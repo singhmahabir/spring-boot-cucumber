@@ -22,7 +22,7 @@
         <cucumber.version>7.11.1</cucumber.version>
         <cucumber-reporting.version>5.7.5</cucumber-reporting.version>
         <spring-cloud-contract-wiremock.version>3.1.10</spring-cloud-contract-wiremock.version>
-        <commons-io.version>2.11.0</commons-io.version>
+        <commons-io.version>2.13.0</commons-io.version>
         <junit-vintage-engine.version>5.9.2</junit-vintage-engine.version>
     </properties>
 
@@ -101,7 +101,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M7</version>
+                <version>3.2.2</version>
                 <configuration>
                     <includes>
                         <include>**/DummyCucumberTests*.java</include>
