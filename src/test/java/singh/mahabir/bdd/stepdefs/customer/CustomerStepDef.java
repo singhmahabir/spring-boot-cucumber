@@ -1,12 +1,9 @@
-package com.example.demo.bdd.stepdefs.dummy;
+package singh.mahabir.bdd.stepdefs.customer;
 
-import static com.example.demo.bdd.stubs.dummy.DummyApiStub.addValidReturnReceiptResponse;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static singh.mahabir.bdd.stubs.customer.CustomerApiStub.addValidReturnReceiptResponse;
 
-import com.example.demo.Utils.BddUtils;
-import com.example.demo.controller.MyRequest;
-import com.example.demo.controller.MyResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.cucumber.datatable.DataTable;
@@ -14,19 +11,21 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.util.UriComponentsBuilder;
+import singh.mahabir.Utils.BddUtils;
+import singh.mahabir.dto.MyRequest;
+import singh.mahabir.dto.MyResponse;
 
-import java.util.List;
-
-public class DummyStepDef {
+public class CustomerStepDef {
 
   private static final String DUMMY_POST_API = "/api/post";
   private static final String DUMMY_GET_API = "/api/get";
-  private static final String FILE_BASE_PATH = "dummy/";
+  private static final String FILE_BASE_PATH = "customer/";
 
   private MyRequest myRequest;
   private ResponseEntity<MyResponse> postResponseEntity;
@@ -36,26 +35,26 @@ public class DummyStepDef {
 
   private String name;
 
-  @Before("@DummyFeatureTest")
+  @Before("@CucumberFeatureTest")
   public void init() {
     addValidReturnReceiptResponse();
   }
 
-  @Given("^create dummy post request$")
+  @Given("^create cucumber post request$")
   public void prepareToCallDummyAPI(DataTable table) throws JsonProcessingException {
     String requestFileName = table.asLists().get(1).get(0);
     String requestString = BddUtils.loadJsonFromFile(FILE_BASE_PATH + requestFileName);
     myRequest = new ObjectMapper().readValue(requestString, MyRequest.class);
   }
 
-  @When("^call dummy post API$")
+  @When("^call cucumber post API$")
   public void callCreateAdjustmentAPI() {
     UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(DUMMY_POST_API);
     HttpEntity<MyRequest> reqEntity = prepareRequestEntity();
     postResponseEntity = template.postForEntity(builder.toUriString(), reqEntity, MyResponse.class);
   }
 
-  @Then("^validate dummy post API response$")
+  @Then("^validate cucumber post API response$")
   public void validateCreateAdjustmentAPIResponse(DataTable table) {
     List<String> values = table.asLists().get(1);
     String expectedHttpStatus = values.get(0);
@@ -71,19 +70,19 @@ public class DummyStepDef {
     assertEquals(expectedName, response.getName());
   }
 
-  @Given("create dummy get request {string}")
+  @Given("create cucumber get request {string}")
   public void createDummyGetRequest(String requestParam) {
     name = requestParam;
   }
 
-  @When("call dummy get API")
+  @When("call cucumber get API")
   public void callGeorgeCreateAdjustmentAPI() {
     UriComponentsBuilder builder =
         UriComponentsBuilder.fromUriString(DUMMY_GET_API).queryParam("name", name);
     getResponseEntity = template.getForEntity(builder.toUriString(), String.class);
   }
 
-  @Then("validate dummy get API response")
+  @Then("validate cucumber get API response")
   public void validateDummyGetAPIResponse(DataTable table) {
     List<String> values = table.asLists().get(1);
     String expectedHttpStatus = values.get(0);

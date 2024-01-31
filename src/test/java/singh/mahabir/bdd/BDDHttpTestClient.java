@@ -1,20 +1,20 @@
-//package com.example.demo.bdd;
+// package com.example.demo.bdd;
 //
-//import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
+// import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
 //
-//import org.springframework.boot.test.web.client.TestRestTemplate;
-//import org.springframework.boot.test.web.server.LocalServerPort;
-//import org.springframework.boot.web.client.RestTemplateBuilder;
-//import org.springframework.context.annotation.Scope;
-//import org.springframework.stereotype.Component;
-//import org.springframework.web.client.RestTemplate;
+// import org.springframework.boot.test.web.client.TestRestTemplate;
+// import org.springframework.boot.test.web.server.LocalServerPort;
+// import org.springframework.boot.web.client.RestTemplateBuilder;
+// import org.springframework.context.annotation.Scope;
+// import org.springframework.stereotype.Component;
+// import org.springframework.web.client.RestTemplate;
 //
-///**
+/// **
 // * @author Mahabir Singh
 // */
-//@Component
-//@Scope(SCOPE_CUCUMBER_GLUE)
-//public class BDDHttpTestClient {
+// @Component
+// @Scope(SCOPE_CUCUMBER_GLUE)
+// public class BDDHttpTestClient {
 //
 //  private final String SERVER_URL = "http://localhost";
 //
@@ -38,4 +38,4 @@
 //    }
 //    return testRestTemplate;
 //  }
-//}
+// }

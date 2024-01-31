@@ -1,20 +1,23 @@
-package com.example.demo.controller;
+package singh.mahabir.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
+import singh.mahabir.dto.MyRequest;
+import singh.mahabir.dto.MyResponse;
 
 /**
  * @author Mahabir Singh
  */
 @Service
-public class DummyService {
+@RequiredArgsConstructor
+public class CustomerService {
 
   private static final String DUMMY_POST_API = "/bdd/any-api-which-needs-to-mock";
 
-  @Autowired RestTemplate template;
+ final RestTemplate template;
 
   public String getName(String name) {
     return "Hello " + name;
@@ -26,4 +29,10 @@ public class DummyService {
 
     return template.postForEntity(builder.toUriString(), reqEntity, MyResponse.class).getBody();
   }
+
+    public String getCustomerId(String id) {
+        return "Customer id " + id;
+    }
+
+
 }

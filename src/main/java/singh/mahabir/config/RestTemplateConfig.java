@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package singh.mahabir.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -10,9 +10,9 @@ import org.springframework.web.client.RestTemplate;
  * @author Mahabir Singh
  */
 @Configuration
-public class RestConfig {
+public class RestTemplateConfig {
 
-  @Value("${dummy.host}")
+  @Value("${customer.host}")
   private String host;
 
   @Bean
